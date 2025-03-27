@@ -5,11 +5,13 @@ if(isset($_POST['submit'])){ //kijkt of die var is geset.
     $age = filter_input(INPUT_POST, 'age', FILTER_SANITIZE_SPECIAL_CHARS);
     $gender = filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_SPECIAL_CHARS);
    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
-
+    $eten = filter_input(INPUT_POST, 'eten', FILTER_SANITIZE_SPECIAL_CHARS);
    echo 'Beste ' . $gender . ',<br> 
 Uw naam is '. $name . '.<br>
 uw leeftijd is '. $age . '.<br> 
-uw email is '. $email . '.<br>';
+uw email is '. $email . '.<br>
+uw favo eten is '. $eten . '.<br>';
+
 
 
 }
@@ -37,6 +39,8 @@ uw email is '. $email . '.<br>';
     <input type="text" name="name" id="name" > <br>
     <label for="age">Leeftijd: </label>
     <input type="number" name="age" id="age"> <br>
+    <label for="eten">eten:</label>
+    <input type="text" name="eten" id="eten"> <br>
     <label for="email">Email:</label>
     <input type="email" name="email" id="name" ><br>
     <button name="submit">Verzenden </button>
