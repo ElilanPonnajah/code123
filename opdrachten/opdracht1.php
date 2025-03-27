@@ -1,4 +1,17 @@
-<?php ?>
+<?php
+
+if(isset($_POST['submit'])){ 
+    $exBtw = filter_input(INPUT_POST, 'exBtw', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION); 
+    $btw = filter_input(INPUT_POST, 'btw', FILTER_SANITIZE_NUMBER_INT); 
+  
+  echo 'bedrag inclusief ' . $btw . ' BTW:' . '$' . $exBtw * ($btw / 100); 
+
+
+
+
+}
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -22,7 +35,7 @@
     <label for="btw">Hoog, 21% </label><br>
 
 
-    <button name="submite">Uitrekenen </button>
+    <button name="submit">Uitrekenen </button>
 </form>
 </body>
 </html>
