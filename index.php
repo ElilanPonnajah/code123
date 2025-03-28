@@ -1,18 +1,64 @@
 <?php
 
+const GENDER_REQUIRED = "Vul uw geslacht in.";
+const AGE_REQUIRED = "Vul uw leeftijd in.";
+const NAME_REQUIRED = "Vul uw naam in.";
+const EMAIL_REQUIRED = "Vul uw email in.";
+
+$errors = [];
+$inputs = [];
+
+
 if(isset($_POST['submit'])){ //kijkt of die var is geset.
-     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
-    $age = filter_input(INPUT_POST, 'age', FILTER_SANITIZE_SPECIAL_CHARS);
-    $gender = filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_SPECIAL_CHARS);
-   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
-    $eten = filter_input(INPUT_POST, 'eten', FILTER_SANITIZE_SPECIAL_CHARS);
-   echo 'Beste ' . $gender . ',<br> 
+     $gender = filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_SPECIAL_CHARS);
+
+     if (empty($gender)){
+         $errors['gender'] = GENDER_REQUIRED;
+     } else {
+         $inputs['gender'] = $gender;
+     }
+
+
+    $age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
+
+    if (empty($age)){
+        $errors['age'] = AGE_REQUIRED;
+    } else {
+        $inputs['age'] = $age;
+    }
+
+
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    if (empty($email)){
+        $errors['email'] = EMAIL_REQUIRED;
+    } else {
+        $inputs['email'] = $email;
+    }
+
+
+
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    if (empty($name)){
+        $errors['name'] = NAME_REQUIRED;
+
+    } else {
+        $inputs['name'] = $name;
+
+
+    }
+
+
+if (count($errors) === 0){
+       echo 'Beste ' . $gender . ',<br>
 Uw naam is '. $name . '.<br>
-uw leeftijd is '. $age . '.<br> 
-uw email is '. $email . '.<br>
-uw favo eten is '. $eten . '.<br>';
+uw leeftijd is '. $age . '.<br>
+uw email is '. $email . '.<br> ';
 
 
+
+}
 
 }
 ?>
@@ -28,21 +74,24 @@ uw favo eten is '. $eten . '.<br>';
 </head>
 <body>
 <form method="post">
-    <input type="radio" name="gender" id="man" value="Man">
+    <input type="radio" name="gender" id="man" value="Meneer" <?php if (isset($inputs['gender']) && $inputs['gender'] === 'Meneer'){echo 'checked';} ?>>
     <label for="man">Man</label><br>
 
-    <input type="radio" name="gender" id="woman" value="Vrouw">
+    <input type="radio" name="gender" id="woman" value="Mevrouw" <?php if (isset($inputs['gender']) && $inputs['gender'] === 'Mevrouw'){echo 'checked';} ?>>
     <label for="woman">Vrouw</label><br>
-    <input type="radio" name="gender" id="different" value="Anders">
+    <input type="radio" name="gender" id="different" value="Anders" <?php if (isset($inputs['gender']) && $inputs['gender'] === 'Anders'){echo 'checked';} ?>>
     <label for="different">Ander</label><br>
     <label for="name">Naam:</label>
-    <input type="text" name="name" id="name" > <br>
+    <input type="text" name="name" id="name"  value="<?= $inputs['name'] ?? '' ?>"> <br>
+    <div><?= $errors['name'] ?? ''?> </div>
     <label for="age">Leeftijd: </label>
-    <input type="number" name="age" id="age"> <br>
-    <label for="eten">eten:</label>
-    <input type="text" name="eten" id="eten"> <br>
+    <input type="number" name="age" id="age" value="<?= $inputs['age'] ?? '' ?>"> <br>
+    <div><?= $errors['age'] ?? ''?> </div>
+
+
     <label for="email">Email:</label>
-    <input type="email" name="email" id="name" ><br>
+    <input type="email" name="email" id="name" value="<?= $inputs['email'] ?? '' ?>"> <br>
+    <div><?= $errors['email'] ?? ''?> </div>
     <button name="submit">Verzenden </button>
 </form>
 </body>
