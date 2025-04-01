@@ -18,7 +18,7 @@ $games = $query->fetchAll(PDO::FETCH_ASSOC);
     <title>Document</title>
 </head>
 <body>
-
+<a href="insert.php">toevoegen</a>
 <table>
     <thead>
     <tr>
