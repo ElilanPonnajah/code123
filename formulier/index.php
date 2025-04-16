@@ -33,9 +33,9 @@
         <div>
             <label for="gender">Geslacht:</label>
             <label for="man">Man</label>
-            <input  type="radio" name="gender" id="man" value="man">
+            <input  class="form-check-input"  type="radio" name="gender" id="man" value="man">
             <label for="woman">Vrouw</label>
-            <input type="radio" name="gender" id="woman" value="woman">
+            <input class="form-check-input" type="radio" name="gender" id="woman" value="woman">
         </div>
 
         <div>
@@ -52,7 +52,7 @@
             <input  type="checkbox">
         </div>
         <div>
-            <button type="submit"> Submit</button>
+            <button class="btn btn-primary" type="submit"> Submit</button>
         </div>
     </form>
 </main>
