@@ -1,5 +1,3 @@
-<?php ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,37 +6,56 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    </body>
 </head>
 <body>
-<p>Naam</p>
-<input type="text" value="naam">
+<main>
+    <h1>Gegevens</h1>
+    <form method="post">
+        <div>
+            <label for="name">Naam:</label>
+            <input class="form-control " type="text" name="name" id="name">
+        </div>
 
-<p>Email</p>
-<input type="text" value="email">
+        <div>
+            <label for="email">E-Mail:</label>
+            <input class="form-control " type="email" name="email" id="email">
+        </div>
 
-<p>Password</p>
-<input type="password" value="Password">
+        <div>
+            <label for="birthday">Geboortedatum:</label>
+            <input  class="form-control " type="date" name="birthday">
+        </div>
 
-<p>Radio input</p>
-<input type="radio" id="1" name="group1" checked>
-<input type="radio" id="2" name="group1">
 
-<p>Checkbox input</p>
-<input type="checkbox" name="check1">
-<input type="checkbox" name="check2" checked>
+        <div>
+            <label for="gender">Geslacht:</label>
+            <label for="man">Man</label>
+            <input  type="radio" name="gender" id="man" value="man">
+            <label for="woman">Vrouw</label>
+            <input type="radio" name="gender" id="woman" value="woman">
+        </div>
 
-<p>Select (dropdown)</p>
-<select name="" id="">
-    <option value="" selected>Keuze 1</option>
-    <option value="">Keuze 2</option>
-    <option value="">Keuze 3</option>
-</select>
+        <div>
+            <label for="school">Opleding:</label>
+            <select class="form-control " id="school" name="school">
+                <option value="Software-developer">Software Developer</option>
+                <option value="Zorg">Zorg</option>
+                <option value="economie">Economie</option>
+                <option value="loodgieter">Loodgieter</option>
+            </select>
+        </div>
+        <div>
+            <label for="news-check">Aanmelden voor nieuwsbrief</label>
+            <input  type="checkbox">
+        </div>
+        <div>
+            <button type="submit"> Submit</button>
+        </div>
+    </form>
+</main>
 
-<p>Tekst area</p>
-<textarea name="" id="" cols="30" rows="10">
-    lorem ipsum dolor sit amet, consectetur adipiscing elit
-</textarea> <br>
 
-<button name="submit">Verzenden</button>
-</body>
 </html>
