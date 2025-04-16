@@ -1,3 +1,22 @@
+<?php
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    echo "Het formulier is via de POST method verstuurd"."<br>";
+    echo "De naam is".$_POST['name']. "<br>";
+    echo "De Email adres is ".$_POST['email']. "<br>";
+    echo "De geboortedatum is ". $_POST['birthday']."<br>";
+    echo "Het geslacht is".$_POST['gender'] ."<br>";
+    echo "De gekozen opleiding is ". $_POST['school']."<br>";
+}
+
+
+
+
+?>
+
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
