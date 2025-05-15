@@ -2,6 +2,10 @@
 require 'lib/connect.php';
 require 'lib/commonFunctions.php';
 
+$username = "root";
+$password = "";
+
+
 try {
 
     $pdo = new PDO("mysql:host=localhost;dbname=sqlinjection" , $username, $password);
