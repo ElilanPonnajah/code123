@@ -1,6 +1,43 @@
 <?php
-?>
 
+$pdo = require 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $voornaam = $_POST['name'];
+    $achternaam = $_POST['lastname'];
+    $email = $_POST['email'];
+    $geboortedatum = $_POST['birthday'];
+    $geslacht = $_POST['gender'];
+    $woonplaats = $_POST['place'];
+    $opleiding = $_POST['school'];
+    $akkoord_voorwaarden = isset($_POST['news-check']) ? 1 : 0;
+
+
+    $sql = "INSERT INTO gebruikers (voornaam, achternaam, email, geboortedatum, geslacht, woonplaats, opleiding, akkoord_voorwaarden)
+            VALUES (:voornaam, :achternaam, :email, :geboortedatum, :geslacht, :woonplaats, :opleiding, :akkoord_voorwaarden)";
+
+
+    $stmt = $pdo->prepare($sql);
+
+    // Bind de parameters
+    $stmt->bindParam(':voornaam', $voornaam);
+    $stmt->bindParam(':achternaam', $achternaam);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':geboortedatum', $geboortedatum);
+    $stmt->bindParam(':geslacht', $geslacht);
+    $stmt->bindParam(':woonplaats', $woonplaats);
+    $stmt->bindParam(':opleiding', $opleiding);
+    $stmt->bindParam(':akkoord_voorwaarden', $akkoord_voorwaarden);
+
+    // Voer de query uit
+    if ($stmt->execute()) {
+        echo "<p>Gegevens succesvol opgeslagen!</p>";
+    } else {
+        echo "<p>Er is iets misgegaan bij het opslaan van je gegevens.</p>";
+    }
+}
+?>
 
 
 
