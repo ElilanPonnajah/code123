@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $pdo->prepare($sql);
 
-    // Bind de parameters
+
     $stmt->bindParam(':voornaam', $voornaam);
     $stmt->bindParam(':achternaam', $achternaam);
     $stmt->bindParam(':email', $email);
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bindParam(':opleiding', $opleiding);
     $stmt->bindParam(':akkoord_voorwaarden', $akkoord_voorwaarden);
 
-    // Voer de query uit
+
     if ($stmt->execute()) {
         echo "<p>Gegevens succesvol opgeslagen!</p>";
     } else {
