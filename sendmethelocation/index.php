@@ -5,7 +5,7 @@ $errors = [];
 $success = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  
+
     $requiredFields = [
         'title' => 'Titel',
         'genre' => 'Genre',
